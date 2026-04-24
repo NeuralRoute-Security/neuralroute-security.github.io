@@ -3,148 +3,692 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuralRoute Security | AI-Driven Network Resilience</title>
+    <title>NeuralRoute Security | Privacy, Security, and Trustworthy AI</title>
+    <meta name="description" content="NeuralRoute Security is a research-driven startup focused on privacy-enhancing technologies, agentic security, and trustworthy AI.">
     <link rel="icon" type="image/png" sizes="512x512" href="favicon-512-square.png">
     <link rel="apple-touch-icon" href="favicon-512-square.png">
     <style>
         :root {
             --brand-navy: #1f1d57;
-            --brand-navy-deep: #13113a;
-            --brand-coral: #e24d59;
-            --brand-coral-soft: #ff7a7f;
-            --text-light: #1f1d57;
-            --text-muted: #5c618a;
-            --panel: rgba(255, 255, 255, 0.9);
-            --panel-border: rgba(31, 29, 87, 0.08);
+            --brand-navy-deep: #141136;
+            --brand-coral: #d54351;
+            --brand-coral-soft: #ee6a73;
+            --ink: #17172f;
+            --ink-soft: #5e6388;
+            --surface: #ffffff;
+            --surface-soft: #f7f7fc;
+            --line: rgba(31, 29, 87, 0.1);
+            --shadow: 0 24px 60px rgba(24, 22, 63, 0.12);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --max-width: 1160px;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: "Avenir Next", "Segoe UI", sans-serif;
-            background:
-                radial-gradient(circle at top, rgba(226, 77, 89, 0.12), transparent 28rem),
-                linear-gradient(180deg, #ffffff 0%, #f6f4fb 100%);
-            color: var(--text-light);
             margin: 0;
+            font-family: "Avenir Next", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(213, 67, 81, 0.12), transparent 28rem),
+                radial-gradient(circle at top right, rgba(31, 29, 87, 0.08), transparent 24rem),
+                linear-gradient(180deg, #ffffff 0%, #f7f6fb 100%);
             line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page-shell {
+            width: min(calc(100% - 2rem), var(--max-width));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.82);
+            border-bottom: 1px solid rgba(31, 29, 87, 0.06);
+        }
+
+        .nav {
+            width: min(calc(100% - 2rem), var(--max-width));
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 2rem;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 0;
         }
-        .container {
-            max-width: 920px;
-            padding: 3rem 3rem 2.5rem;
-            background: linear-gradient(180deg, #ffffff, #fcfbff);
-            border: 1px solid var(--panel-border);
-            border-radius: 1.5rem;
-            box-shadow: 0 24px 70px rgba(31, 29, 87, 0.1);
-        }
-        .logo {
-            width: min(100%, 560px);
-            margin-bottom: 2rem;
-        }
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 1.05;
-            color: var(--text-light);
-            margin: 0 0 1.25rem;
-            letter-spacing: -0.04em;
-        }
-        p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin: 0 auto 2.25rem;
-            max-width: 42rem;
-        }
-        .tagline {
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: var(--brand-coral-soft);
-            font-size: 0.82rem;
-            margin-bottom: 1rem;
-        }
-        .footer {
-            margin-top: 3rem;
-            font-size: 0.86rem;
-            color: rgba(31, 29, 87, 0.56);
-        }
-        .contact-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--brand-coral) 0%, var(--brand-coral-soft) 100%);
-            color: white;
-            padding: 0.95rem 1.75rem;
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
             text-decoration: none;
-            border-radius: 999px;
             font-weight: 700;
-            box-shadow: 0 12px 30px rgba(226, 77, 89, 0.28);
-            transition: transform 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.02em;
         }
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 18px 34px rgba(226, 77, 89, 0.34);
+
+        .brand img {
+            width: 36px;
+            height: 36px;
         }
-        .contact-note {
-            margin-top: 0.9rem;
-            font-size: 0.95rem;
-            color: var(--text-muted);
+
+        .brand-name {
+            font-size: 0.98rem;
         }
-        .contact-note a {
+
+        .brand-neural {
             color: var(--brand-navy);
-            font-weight: 700;
-            text-decoration: none;
         }
-        .contact-status {
-            min-height: 1.4rem;
-            margin-top: 0.65rem;
-            font-size: 0.92rem;
+
+        .brand-route {
             color: var(--brand-coral);
         }
-        @media (max-width: 640px) {
-            body { padding: 1rem; }
-            .container { padding: 2rem 1.35rem; }
-            p { font-size: 1rem; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            color: var(--ink-soft);
+            font-size: 0.96rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-navy);
+        }
+
+        .hero {
+            padding: 5.25rem 0 3.5rem;
+        }
+
+        .hero-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+            gap: 2rem;
+            align-items: stretch;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(249, 248, 253, 0.92));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero-copy {
+            padding: 3.5rem 3.25rem;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(213, 67, 81, 0.08);
+            color: var(--brand-coral);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 1.25rem 0 1rem;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            line-height: 0.96;
+            letter-spacing: -0.05em;
+            color: var(--brand-navy);
+            max-width: 10ch;
+        }
+
+        .hero-copy p {
+            margin: 0 0 1.65rem;
+            max-width: 56ch;
+            font-size: 1.12rem;
+            color: var(--ink-soft);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .button-primary,
+        .button-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0.9rem 1.35rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, var(--brand-coral) 0%, var(--brand-coral-soft) 100%);
+            color: #ffffff;
+            box-shadow: 0 14px 36px rgba(213, 67, 81, 0.24);
+        }
+
+        .button-secondary {
+            border: 1px solid var(--line);
+            color: var(--brand-navy);
+            background: rgba(255, 255, 255, 0.78);
+        }
+
+        .button-primary:hover,
+        .button-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-note {
+            font-size: 0.98rem;
+            color: var(--ink-soft);
+        }
+
+        .hero-aside {
+            position: relative;
+            min-height: 100%;
+            padding: 2rem;
+            background:
+                radial-gradient(circle at top right, rgba(238, 106, 115, 0.14), transparent 16rem),
+                linear-gradient(180deg, #fff7f8 0%, #f7f5fb 100%);
+            color: var(--brand-navy);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 1px solid rgba(31, 29, 87, 0.08);
+        }
+
+        .hero-aside img {
+            width: min(100%, 360px);
+            align-self: flex-start;
+            filter: drop-shadow(0 14px 30px rgba(31, 29, 87, 0.08));
+        }
+
+        .hero-points {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+
+        .hero-point {
+            padding: 1rem 1.1rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(31, 29, 87, 0.08);
+            box-shadow: 0 10px 22px rgba(31, 29, 87, 0.05);
+        }
+
+        .hero-point strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 0.96rem;
+        }
+
+        .hero-point span {
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+        }
+
+        section {
+            padding: 1.4rem 0 3.25rem;
+        }
+
+        .section-head {
+            display: grid;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-kicker {
+            color: var(--brand-coral);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            color: var(--brand-navy);
+        }
+
+        .section-head p {
+            margin: 0;
+            max-width: 60ch;
+            color: var(--ink-soft);
+            font-size: 1.04rem;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            box-shadow: 0 12px 32px rgba(22, 20, 57, 0.06);
+        }
+
+        .card-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 999px;
+            background: rgba(213, 67, 81, 0.1);
+            color: var(--brand-coral);
+            font-size: 0.82rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin: 0 0 0.6rem;
+            color: var(--brand-navy);
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--ink-soft);
+        }
+
+        .spotlight {
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            background:
+                radial-gradient(circle at top right, rgba(238, 106, 115, 0.16), transparent 16rem),
+                linear-gradient(135deg, rgba(31, 29, 87, 0.98), rgba(20, 17, 54, 0.98));
+            color: #ffffff;
+            box-shadow: var(--shadow);
+        }
+
+        .spotlight h2,
+        .spotlight p {
+            color: inherit;
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .spotlight-box {
+            padding: 1.25rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .spotlight-box strong {
+            display: block;
+            margin-bottom: 0.45rem;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .principles {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1.25rem;
+            align-items: stretch;
+        }
+
+        .quote-card {
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, #ffffff, #fbfbfe);
+            border: 1px solid var(--line);
+            box-shadow: 0 16px 44px rgba(24, 22, 63, 0.08);
+        }
+
+        .quote-card blockquote {
+            margin: 0;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            line-height: 1.18;
+            letter-spacing: -0.03em;
+            color: var(--brand-navy);
+        }
+
+        .quote-card p {
+            margin: 1rem 0 0;
+            color: var(--ink-soft);
+        }
+
+        .contact-card {
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(213, 67, 81, 0.08), rgba(31, 29, 87, 0.06));
+            border: 1px solid rgba(31, 29, 87, 0.08);
+        }
+
+        .contact-card h3 {
+            margin: 0 0 0.65rem;
+            color: var(--brand-navy);
+            font-size: 1.5rem;
+        }
+
+        .contact-card p {
+            margin: 0 0 1rem;
+            color: var(--ink-soft);
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0.9rem 1.2rem;
+            border-radius: 16px;
+            background: #ffffff;
+            border: 1px solid rgba(31, 29, 87, 0.12);
+            text-decoration: none;
+            font-weight: 700;
+            color: var(--brand-navy);
+        }
+
+        .contact-copy {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0.9rem 1.2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(31, 29, 87, 0.12);
+            background: transparent;
+            color: var(--brand-navy);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .contact-status {
+            min-height: 1.35rem;
+            margin-top: 0.7rem;
+            color: var(--brand-coral);
+            font-size: 0.94rem;
+        }
+
+        .site-footer {
+            padding: 1rem 0 2.25rem;
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 980px) {
+            .hero-panel,
+            .spotlight-grid,
+            .principles,
+            .pillars,
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-copy,
+            .hero-aside,
+            .quote-card,
+            .contact-card,
+            .spotlight {
+                padding: 1.75rem;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.9rem 1rem;
+            }
+
+            .hero {
+                padding-top: 3rem;
+            }
+
+            h1 {
+                max-width: none;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .button-primary,
+            .button-secondary,
+            .contact-email {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="neural-route-logo-white-hires.png" alt="NeuralRoute Security Logo" class="logo">
-        <div class="tagline">Next-Generation Privacy Infrastructure</div>
-        <h1>Securing the Future of Agentic Networking</h1>
-        <p>NeuralRoute Security LLC provides advanced R&D in AI-driven network resilience and privacy-preserving routing protocols. We build the infrastructure that keeps autonomous systems secure and private.</p>
-        <a href="mailto:contact@neuralroute.ai" class="contact-btn" id="contact-link">Contact Our Research Team</a>
-        <div class="contact-note">Or email us directly at <a href="mailto:contact@neuralroute.ai">contact@neuralroute.ai</a></div>
-        <div class="contact-status" id="contact-status" aria-live="polite"></div>
-        <div class="footer">
-            &copy; 2026 NeuralRoute Security LLC. All Rights Reserved. <br>
-            Amherst, Massachusetts
-        </div>
-    </div>
+    <header class="site-header">
+        <nav class="nav">
+            <a class="brand" href="#top" aria-label="NeuralRoute Security home">
+                <img src="favicon-512-square.png" alt="">
+                <span class="brand-name"><span class="brand-neural">Neural</span><span class="brand-route">Route</span> Security</span>
+            </a>
+            <div class="nav-links">
+                <a href="#focus">Focus</a>
+                <a href="#approach">Approach</a>
+                <a href="#principles">Principles</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="top" class="page-shell">
+        <section class="hero">
+            <div class="hero-panel">
+                <div class="hero-copy">
+                    <div class="eyebrow">A Research-Driven Security Startup</div>
+                    <h1>Privacy, security, and trust for the agentic era.</h1>
+                    <p>NeuralRoute Security is a research-driven startup advancing work at the intersection of privacy-enhancing technologies, agentic security, and trustworthy AI.</p>
+                    <p>We focus on foundational problems that matter over the long term: how intelligent systems can protect sensitive information, behave reliably under real-world constraints, and earn trust in high-stakes settings.</p>
+                    <div class="hero-actions">
+                        <a class="button-primary" href="#contact">Contact Us</a>
+                        <a class="button-secondary" href="#focus">What We Focus On</a>
+                    </div>
+                    <div class="hero-note">Building toward secure, privacy-preserving, and accountable intelligent infrastructure.</div>
+                </div>
+                <aside class="hero-aside">
+                    <img src="neural-route-logo-white-hires.png" alt="NeuralRoute Security logo">
+                    <div class="hero-points">
+                        <div class="hero-point">
+                            <strong>Privacy-Enhancing Technologies</strong>
+                            <span>Architectures and protocols that reduce exposure and improve privacy by design.</span>
+                        </div>
+                        <div class="hero-point">
+                            <strong>Agentic Security</strong>
+                            <span>Security models for systems that act, plan, and interact with growing autonomy.</span>
+                        </div>
+                        <div class="hero-point">
+                            <strong>Trustworthy AI</strong>
+                            <span>Robustness, assurance, and responsible deployment for consequential AI systems.</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="focus">
+            <div class="section-head">
+                <div class="section-kicker">Focus Areas</div>
+                <h2>Research themes that support safer and more dependable AI.</h2>
+                <p>We keep our work high-level and foundational, centered on the technical and systemic questions that will shape secure intelligent systems over time.</p>
+            </div>
+            <div class="pillars">
+                <article class="card">
+                    <div class="card-number">01</div>
+                    <h3>Privacy-Enhancing Technologies</h3>
+                    <p>We explore designs that help protect sensitive data, limit unnecessary information exposure, and strengthen privacy guarantees across modern digital systems.</p>
+                </article>
+                <article class="card">
+                    <div class="card-number">02</div>
+                    <h3>Agentic Security</h3>
+                    <p>We investigate how autonomous and semi-autonomous systems can operate under meaningful security controls, resilient oversight, and clear safety boundaries.</p>
+                </article>
+                <article class="card">
+                    <div class="card-number">03</div>
+                    <h3>Trustworthy AI</h3>
+                    <p>We work on the robustness, transparency, and assurance practices needed to make advanced AI systems more reliable and more worthy of trust.</p>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <div class="spotlight">
+                <div class="spotlight-grid">
+                    <div>
+                        <div class="section-kicker" style="color: rgba(255,255,255,0.72);">Why It Matters</div>
+                        <h2>As AI systems gain autonomy, security and privacy become core infrastructure questions.</h2>
+                        <p>NeuralRoute Security focuses on the enabling research needed to make intelligent systems safer to deploy, easier to govern, and more dependable in environments where privacy, security, and trust are essential.</p>
+                    </div>
+                    <div class="spotlight-box">
+                        <strong>Our orientation</strong>
+                        <p>We are interested in durable technical foundations rather than short-lived feature cycles: the kinds of advances that improve resilience, accountability, and trust across many future systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="approach">
+            <div class="section-head">
+                <div class="section-kicker">How We Work</div>
+                <h2>Research-led, technically serious, and long-term by design.</h2>
+                <p>We approach security and AI as intertwined systems problems, combining careful technical exploration with practical engineering judgment.</p>
+            </div>
+            <div class="work-grid">
+                <article class="card">
+                    <h3>Research-Driven Exploration</h3>
+                    <p>We study emerging security and trust challenges introduced by increasingly capable and interconnected AI systems.</p>
+                </article>
+                <article class="card">
+                    <h3>Prototype and Validation</h3>
+                    <p>We translate ideas into concrete technical artifacts and evaluate them with an eye toward real-world reliability and constraints.</p>
+                </article>
+                <article class="card">
+                    <h3>Cross-Disciplinary Thinking</h3>
+                    <p>Our work spans privacy engineering, security architecture, trustworthy AI, and systems-level design.</p>
+                </article>
+                <article class="card">
+                    <h3>Dependable Foundations</h3>
+                    <p>We prioritize infrastructure-level thinking that can support secure, resilient, and accountable intelligent systems over the long term.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="principles">
+            <div class="principles">
+                <div class="quote-card">
+                    <blockquote>We believe the future of AI depends on systems that are not only capable, but secure, privacy-preserving, and worthy of trust.</blockquote>
+                    <p>NeuralRoute Security is built around that premise, with a focus on advancing the technical foundations that make trustworthy intelligent systems possible.</p>
+                </div>
+                <div class="contact-card" id="contact">
+                    <h3>Let’s Connect</h3>
+                    <p>We welcome conversations about research, technical collaboration, and the future of secure and trustworthy intelligent systems.</p>
+                    <div class="contact-actions">
+                        <a class="contact-email" href="mailto:contact@neuralroute.ai" id="contact-link">contact@neuralroute.ai</a>
+                        <button class="contact-copy" id="copy-email" type="button">Copy Email</button>
+                    </div>
+                    <div class="contact-status" id="contact-status" aria-live="polite"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-shell site-footer">
+        &copy; 2026 NeuralRoute Security LLC.
+    </footer>
+
     <script>
         const contactLink = document.getElementById("contact-link");
+        const copyEmailButton = document.getElementById("copy-email");
         const contactStatus = document.getElementById("contact-status");
         const emailAddress = "contact@neuralroute.ai";
 
-        contactLink.addEventListener("click", async (event) => {
+        contactLink.addEventListener("click", (event) => {
             event.preventDefault();
             contactStatus.textContent = "";
-
             window.location.href = `mailto:${emailAddress}`;
+            window.setTimeout(() => {
+                contactStatus.textContent = "If your mail app did not open, use Copy Email or write to contact@neuralroute.ai.";
+            }, 400);
+        });
 
-            if (navigator.clipboard && window.isSecureContext) {
-                try {
+        copyEmailButton.addEventListener("click", async () => {
+            contactStatus.textContent = "";
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
                     await navigator.clipboard.writeText(emailAddress);
-                    contactStatus.textContent = "If your mail app did not open, the email address has been copied.";
+                    contactStatus.textContent = "Email address copied.";
                     return;
-                } catch (error) {
-                    // Fall through to the plain fallback message below.
                 }
+            } catch (error) {
+                // Fall back to manual copy below.
             }
 
-            contactStatus.textContent = "If your mail app did not open, email us at contact@neuralroute.ai.";
+            const helper = document.createElement("input");
+            helper.value = emailAddress;
+            document.body.appendChild(helper);
+            helper.select();
+            helper.setSelectionRange(0, emailAddress.length);
+
+            try {
+                document.execCommand("copy");
+                contactStatus.textContent = "Email address copied.";
+            } catch (error) {
+                contactStatus.textContent = "Copy failed. Email us at contact@neuralroute.ai.";
+            }
+
+            helper.remove();
         });
     </script>
 </body>
