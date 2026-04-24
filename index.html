@@ -86,6 +86,22 @@
             transform: translateY(-2px);
             box-shadow: 0 18px 34px rgba(226, 77, 89, 0.34);
         }
+        .contact-note {
+            margin-top: 0.9rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        .contact-note a {
+            color: var(--brand-navy);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .contact-status {
+            min-height: 1.4rem;
+            margin-top: 0.65rem;
+            font-size: 0.92rem;
+            color: var(--brand-coral);
+        }
         @media (max-width: 640px) {
             body { padding: 1rem; }
             .container { padding: 2rem 1.35rem; }
@@ -99,11 +115,37 @@
         <div class="tagline">Next-Generation Privacy Infrastructure</div>
         <h1>Securing the Future of Agentic Networking</h1>
         <p>NeuralRoute Security LLC provides advanced R&D in AI-driven network resilience and privacy-preserving routing protocols. We build the infrastructure that keeps autonomous systems secure and private.</p>
-        <a href="mailto:info@neuralroute.ai" class="contact-btn">Contact Our Research Team</a>
+        <a href="mailto:contact@neuralroute.ai" class="contact-btn" id="contact-link">Contact Our Research Team</a>
+        <div class="contact-note">Or email us directly at <a href="mailto:contact@neuralroute.ai">contact@neuralroute.ai</a></div>
+        <div class="contact-status" id="contact-status" aria-live="polite"></div>
         <div class="footer">
             &copy; 2026 NeuralRoute Security LLC. All Rights Reserved. <br>
             Amherst, Massachusetts
         </div>
     </div>
+    <script>
+        const contactLink = document.getElementById("contact-link");
+        const contactStatus = document.getElementById("contact-status");
+        const emailAddress = "contact@neuralroute.ai";
+
+        contactLink.addEventListener("click", async (event) => {
+            event.preventDefault();
+            contactStatus.textContent = "";
+
+            window.location.href = `mailto:${emailAddress}`;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                try {
+                    await navigator.clipboard.writeText(emailAddress);
+                    contactStatus.textContent = "If your mail app did not open, the email address has been copied.";
+                    return;
+                } catch (error) {
+                    // Fall through to the plain fallback message below.
+                }
+            }
+
+            contactStatus.textContent = "If your mail app did not open, email us at contact@neuralroute.ai.";
+        });
+    </script>
 </body>
 </html>
